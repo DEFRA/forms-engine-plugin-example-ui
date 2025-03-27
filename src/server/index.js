@@ -1,4 +1,6 @@
 import path from 'path'
+import plugin from '@defra/forms-engine-plugin'
+import crumb from '@hapi/crumb'
 import hapi from '@hapi/hapi'
 
 import { config } from '~/src/config/config.js'
@@ -12,6 +14,7 @@ import { getCacheEngine } from '~/src/server/common/helpers/session-cache/cache-
 import { pulse } from '~/src/server/common/helpers/pulse.js'
 import { requestTracing } from '~/src/server/common/helpers/request-tracing.js'
 import { setupProxy } from '~/src/server/common/helpers/proxy/setup-proxy.js'
+import services from '~/src/server/forms-service.js'
 
 export async function createServer() {
   setupProxy()
@@ -53,6 +56,7 @@ export async function createServer() {
     }
   })
   await server.register([
+    crumb,
     requestLogger,
     requestTracing,
     secureContext,
@@ -61,6 +65,9 @@ export async function createServer() {
     nunjucksConfig,
     router // Register all the controllers/routes defined in src/server/router.js
   ])
+
+  // Register the forms-engine-plugin
+  await server.register({ plugin, options: { services } })
 
   server.ext('onPreResponse', catchAll)
 

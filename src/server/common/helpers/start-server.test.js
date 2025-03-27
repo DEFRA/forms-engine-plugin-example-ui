@@ -13,7 +13,7 @@ jest.mock('hapi-pino', () => ({
       error: mockHapiLoggerError
     })
   },
-  name: 'mock-hapi-pino'
+  name: 'hapi-pino'
 }))
 jest.mock('~/src/server/common/helpers/logging/logger.js', () => ({
   createLogger: () => ({

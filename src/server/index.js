@@ -1,20 +1,22 @@
+import { catchAll } from '~/src/server/common/helpers/errors.js'
+import { config } from '~/src/config/config.js'
+import crumb from '@hapi/crumb'
+import { getCacheEngine } from '~/src/server/common/helpers/session-cache/cache-engine.js'
+import hapi from '@hapi/hapi'
+import { join } from 'node:path'
+import { nunjucksConfig } from '~/src/config/nunjucks/nunjucks.js'
 import path from 'path'
 import plugin from '@defra/forms-engine-plugin'
-import crumb from '@hapi/crumb'
-import hapi from '@hapi/hapi'
-
-import { config } from '~/src/config/config.js'
-import { nunjucksConfig } from '~/src/config/nunjucks/nunjucks.js'
-import { router } from './router.js'
-import { requestLogger } from '~/src/server/common/helpers/logging/request-logger.js'
-import { catchAll } from '~/src/server/common/helpers/errors.js'
-import { secureContext } from '~/src/server/common/helpers/secure-context/index.js'
-import { sessionCache } from '~/src/server/common/helpers/session-cache/session-cache.js'
-import { getCacheEngine } from '~/src/server/common/helpers/session-cache/cache-engine.js'
 import { pulse } from '~/src/server/common/helpers/pulse.js'
+import { requestLogger } from '~/src/server/common/helpers/logging/request-logger.js'
 import { requestTracing } from '~/src/server/common/helpers/request-tracing.js'
-import { setupProxy } from '~/src/server/common/helpers/proxy/setup-proxy.js'
+import { router } from './router.js'
+import { secureContext } from '~/src/server/common/helpers/secure-context/index.js'
 import services from '~/src/server/forms-service.js'
+import { sessionCache } from '~/src/server/common/helpers/session-cache/session-cache.js'
+import { setupProxy } from '~/src/server/common/helpers/proxy/setup-proxy.js'
+
+export const paths = [join(config.get('appDir'), 'views')]
 
 export async function createServer() {
   setupProxy()
@@ -66,8 +68,18 @@ export async function createServer() {
     router // Register all the controllers/routes defined in src/server/router.js
   ])
 
+  const options = {
+    services,
+    nunjucks: {
+      baseLayoutPath: 'layout.html',
+      paths: [...paths, 'node_modules/govuk-frontend/dist']
+    },
+    viewContext: nunjucksConfig.options.context,
+    baseUrl: 'http://localhost:3000/',
+    cache: 'session'
+  }
   // Register the forms-engine-plugin
-  await server.register({ plugin, options: { services } })
+  await server.register({ plugin, options })
 
   server.ext('onPreResponse', catchAll)
 

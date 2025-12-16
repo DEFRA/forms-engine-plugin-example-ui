@@ -1,6 +1,7 @@
 import convict from 'convict'
-import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import path from 'node:path'
+import { resolve } from 'node:path'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -12,6 +13,10 @@ const isTest = process.env.NODE_ENV === 'test'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export const config = convict({
+  appDir: {
+    format: String,
+    default: resolve(import.meta.dirname, '../server')
+  },
   serviceVersion: {
     doc: 'The service version, this variable is injected into your docker container in CDP environments',
     format: String,

@@ -48,6 +48,8 @@ services:
     build: ./
     ports:
       - '3000:3000'
+    volumes:
+      - ./.services:/tmp/services
     links:
       - 'localstack:localstack'
       - 'redis:redis'

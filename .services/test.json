@@ -1,0 +1,40 @@
+{
+  "name": "Form name",
+  "pages": [
+    {
+      "title": "Start page",
+      "path": "/start",
+      "controller": "StartPageController",
+      "components": [
+        {
+          "name": "Jhimsh",
+          "title": "Html",
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Example</p>",
+          "options": {},
+          "schema": {}
+        }
+      ]
+    },
+    {
+      "title": "Page title",
+      "path": "/abc",
+      "components": [
+        {
+          "name": "xyz",
+          "title": "Full name",
+          "type": "TextField"
+        },
+        {
+          "name": "xyzzzz",
+          "title": "Full name2",
+          "type": "TextField"
+        }
+      ]
+    }
+  ],
+  "sections": [],
+  "lists": [],
+  "conditions": [],
+  "engine": "V2"
+}

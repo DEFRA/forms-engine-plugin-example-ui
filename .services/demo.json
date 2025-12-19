@@ -1,45 +1,289 @@
 {
-  "startPage": "/uk-passport",
+  "engine": "V2",
+  "schema": 2,
+  "name": "Apply for a New Passport",
+  "startPage": "/start-page",
   "pages": [
     {
-      "path": "/uk-passport",
+      "id": "9e6ed968-841e-459c-9372-0ad837388b46",
+      "title": "Start page",
+      "path": "/start-page",
       "components": [
         {
-          "type": "YesNoField",
-          "name": "ukPassport",
-          "title": "Do you have a UK passport?",
+          "type": "Html",
+          "name": "htmlzero",
+          "title": "Html",
+          "content": "<h1 class=\"govuk-heading-l\">Apply for a New Passport</h1>",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "name": "htmlone",
+          "title": "Html",
+          "content": "<p class=\"govuk-body\">Use this service to:</p><ul class=\"govuk-list govuk-list--bullet\"><li>Start a new passport application</li><li>Save and continue an existing application</li><li>Submit application for review</li></ul>",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "name": "htmltwo",
+          "title": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Before you start</h2>",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "name": "htmlthree",
+          "title": "Html",
+          "content": "<p class=\"govuk-body\">You can also <a href='#' class='govuk-link'>register by post</a>.</p>",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "name": "htmlfour",
+          "title": "Html",
+          "content": "<p class=\"govuk-body\">The online service is also available in <a href='?lang=cy-GB' class='govuk-link'>Welsh (Cymraeg)</a>.</p>",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "name": "htmlfive",
+          "title": "Html",
+          "content": "<p class=\"govuk-body\">You cannot register for this service if you're in the UK illegally.</p>",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "name": "htmlsix",
+          "title": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Subsection</h2>",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "name": "htmlseven",
+          "title": "Html",
+          "content": "<p class=\"govuk-body\"><a href='#' class='govuk-link'>Related link</a><br><a href='#' class='govuk-link'>Related link</a><br><a href='#' class='govuk-link govuk-!-font-weight-bold'>More in Subsection</a></p>",
+          "options": {},
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/what-is-your-full-name"
+        }
+      ],
+      "controller": "StartPageController"
+    },
+    {
+      "id": "6cec4f2c-650e-49b8-a149-9977645f20a3",
+      "title": "What is your full name",
+      "path": "/what-is-your-full-name",
+      "components": [
+        {
+          "type": "TextField",
+          "name": "ftext",
+          "title": "What is your full name?",
+          "hint": "Enter your first name and surname as they appear on official documents.",
           "options": {
             "required": true
           },
           "schema": {}
         }
       ],
-      "section": "checkBeforeYouStart",
+      "next": [
+        {
+          "path": "/what-is-your-date-of-birth"
+        }
+      ]
+    },
+    {
+      "id": "693d0645-3dee-43a4-9628-9f68e8728ff7",
+      "title": "What is your date of birth",
+      "path": "/what-is-your-date-of-birth",
+      "components": [
+        {
+          "type": "DatePartsField",
+          "name": "fdateInput",
+          "title": "What is your date of birth?",
+          "hint": "Use the format DD MM YYYY.",
+          "options": {
+            "required": true
+          },
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/what-is-your-nationality"
+        }
+      ]
+    },
+    {
+      "id": "6d4b6d0f-bc31-40dd-a9a1-d652db53c947",
+      "title": "What is your nationality",
+      "path": "/what-is-your-nationality",
+      "components": [
+        {
+          "id": "158e773e-0ce7-4e42-b924-50d32fcd798c",
+          "type": "RadiosField",
+          "name": "fradio",
+          "title": "What is your nationality?",
+          "hint": "",
+          "list": "312013a7-8591-43b6-a89d-45907ebf6f7c",
+          "options": {
+            "required": true
+          },
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/what-is-your-current-address"
+        }
+      ]
+    },
+    {
+      "id": "2900e8e5-1402-41b1-ba2a-9aca0f3c4814",
+      "title": "What is your current address",
+      "path": "/what-is-your-current-address",
+      "components": [
+        {
+          "type": "UkAddressField",
+          "name": "faddressInput",
+          "title": "What is your current address?",
+          "hint": "",
+          "options": {
+            "required": true
+          },
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/what-is-your-email-address"
+        }
+      ]
+    },
+    {
+      "id": "8a144788-f90d-4649-9326-2a7edf4cff19",
+      "title": "What is your email address",
+      "path": "/what-is-your-email-address",
+      "components": [
+        {
+          "type": "EmailAddressField",
+          "name": "femailInput",
+          "title": "What is your email address?",
+          "hint": "",
+          "options": {
+            "required": true
+          },
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/what-is-your-phone-number"
+        }
+      ]
+    },
+    {
+      "id": "0af21376-19f2-401e-9690-df6ac284192b",
+      "title": "What is your phone number",
+      "path": "/what-is-your-phone-number",
+      "components": [
+        {
+          "type": "TelephoneNumberField",
+          "name": "fphoneNumberInput",
+          "title": "What is your phone number?",
+          "hint": "",
+          "options": {
+            "required": true
+          },
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/upload-your-digital-photo"
+        }
+      ]
+    },
+    {
+      "id": "e86a6a3d-cdc6-44ce-b01b-30bfd18ffc07",
+      "title": "Upload your digital photo",
+      "path": "/upload-your-digital-photo",
+      "components": [
+        {
+          "type": "FileUploadField",
+          "name": "ffileupload",
+          "title": "Upload your digital photo",
+          "hint": "The photo should be recent and meet passport photo standards.",
+          "options": {
+            "required": false,
+            "accept": "application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,application/pdf,image/png,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          },
+          "schema": {
+            "min": 1
+          }
+        }
+      ],
       "next": [
         {
           "path": "/summary"
         }
-      ],
-      "title": "Do you have a UK passport?"
+      ]
     },
     {
+      "id": "786ebd40-92db-4c03-a48d-5241ef00a397",
+      "title": "Check your answers before sending your application",
       "path": "/summary",
-      "controller": "SummaryPageController",
-      "title": "Summary",
       "components": [],
-      "next": []
+      "next": [
+        {
+          "path": "/submitted"
+        }
+      ],
+      "controller": "SummaryPageController"
     }
   ],
-  "lists": [],
-  "sections": [
+  "conditions": [],
+  "sections": [],
+  "lists": [
     {
-      "name": "checkBeforeYouStart",
-      "title": "Check before you start"
+      "id": "312013a7-8591-43b6-a89d-45907ebf6f7c",
+      "name": "listfradio",
+      "title": "Options for What is your nationality?",
+      "type": "string",
+      "items": [
+        {
+          "text": "British",
+          "value": "British",
+          "description": "",
+          "condition": ""
+        },
+        {
+          "text": "Irish",
+          "value": "Irish",
+          "description": "",
+          "condition": ""
+        },
+        {
+          "text": "Other",
+          "value": "Other",
+          "description": "",
+          "condition": ""
+        }
+      ]
     }
   ],
-  "feedback": {
-    "emailAddress": "test@feedback.cat"
-  },
-  "declaration": "<p class=\"govuk-body\">All the answers you have provided are true to the best of your knowledge.</p>",
-  "conditions": []
+  "phaseBanner": {
+    "phase": "alpha"
+  }
 }

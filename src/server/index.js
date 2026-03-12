@@ -15,6 +15,7 @@ import { pulse } from '~/src/server/common/helpers/pulse.js'
 import { requestTracing } from '~/src/server/common/helpers/request-tracing.js'
 import { setupProxy } from '~/src/server/common/helpers/proxy/setup-proxy.js'
 import services from '~/src/server/forms-service.js'
+import { context as viewContext } from '~/src/config/nunjucks/context/context.js'
 
 export async function createServer() {
   setupProxy()
@@ -80,11 +81,7 @@ export async function createServer() {
           path.resolve(config.get('root'), 'src/server/common/components')
         ]
       },
-      viewContext: () => ({
-        serviceName: config.get('serviceName'),
-        serviceUrl: '/',
-        assetPath: `${config.get('assetPath')}/assets`
-      }),
+      viewContext,
       services
     }
   })

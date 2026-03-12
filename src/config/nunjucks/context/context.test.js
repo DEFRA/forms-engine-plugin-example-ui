@@ -43,8 +43,13 @@ describe('#context', () => {
           },
           {
             isActive: false,
-            text: 'About',
-            url: '/about'
+            text: 'Simple form',
+            url: '/simple-form/start'
+          },
+          {
+            isActive: false,
+            text: 'Register a unicorn form',
+            url: '/register-a-unicorn/where-do-you-live'
           }
         ],
         serviceName: 'forms-engine-plugin-example-ui',
@@ -132,8 +137,13 @@ describe('#context cache', () => {
           },
           {
             isActive: false,
-            text: 'About',
-            url: '/about'
+            text: 'Simple form',
+            url: '/simple-form/start'
+          },
+          {
+            isActive: false,
+            text: 'Register a unicorn form',
+            url: '/register-a-unicorn/where-do-you-live'
           }
         ],
         serviceName: 'forms-engine-plugin-example-ui',

@@ -15,12 +15,12 @@ Dependency upgrade and API alignment only. No new features.
 
 ### 1. Dependency Updates (`package.json`)
 
-| Package | From | To |
-|---|---|---|
-| `@defra/forms-engine-plugin` | `^0.1.6` | `^4.1.3` |
-| `govuk-frontend` | `^5.7.1` | `^5.14.0` |
-| `hapi-pino` | `^12.1.0` | `^13.0.0` |
-| `@hapi/boom` | _(missing)_ | `^10.0.1` |
+| Package                      | From        | To        |
+| ---------------------------- | ----------- | --------- |
+| `@defra/forms-engine-plugin` | `^0.1.6`    | `^4.1.3`  |
+| `govuk-frontend`             | `^5.7.1`    | `^5.14.0` |
+| `hapi-pino`                  | `^12.1.0`   | `^13.0.0` |
+| `@hapi/boom`                 | _(missing)_ | `^10.0.1` |
 
 `hapi-pino` is bumped to `^13.0.0` to match what the plugin depends on. `@hapi/boom` is added as a direct dependency because `forms-service.js` imports it but it is absent from `package.json`.
 
@@ -55,6 +55,7 @@ await server.register({
 ```
 
 **Notes:**
+
 - **crumb**: The plugin handles CSRF token injection into form `<form>` elements internally. `viewContext` does not need to provide it. The existing `context.js` for the host app's routes also does not include crumb — this is consistent.
 - **`@hapi/crumb` must be registered before `forms-engine-plugin`**. The current order in `index.js` already satisfies this (crumb is in the first `server.register([...])` batch). Do not reorder plugin registration.
 - **`baseUrl`**: For this demo, `http://localhost:{port}` is intentionally hardcoded. No `BASE_URL` config key is added. This is a known demo-only constraint. A production service would derive this from an environment variable.
@@ -102,6 +103,7 @@ After install, verify the exact parameter signature against the v4 `FormsService
 Remove `useTudorCrown: true` from the `govukHeader` call. Deprecated in govuk-frontend v5.3.0; King's Crown is now the default. The SCSS already has `$govuk-new-organisation-colours: true`.
 
 **Before:**
+
 ```njk
 {{ govukHeader({
   homepageUrl: "https://www.gov.uk/",
@@ -114,6 +116,7 @@ Remove `useTudorCrown: true` from the `govukHeader` call. Deprecated in govuk-fr
 ```
 
 **After:**
+
 ```njk
 {{ govukHeader({
   homepageUrl: "https://www.gov.uk/",

@@ -67,7 +67,27 @@ export async function createServer() {
   ])
 
   // Register the forms-engine-plugin
-  await server.register({ plugin, options: { services } })
+  await server.register({
+    plugin,
+    options: {
+      baseUrl: `http://localhost:${config.get('port')}`,
+      cache: config.get('session.cache.name'),
+      nunjucks: {
+        baseLayoutPath: 'layouts/page.njk',
+        paths: [
+          path.resolve(config.get('root'), 'node_modules/govuk-frontend/dist'),
+          path.resolve(config.get('root'), 'src/server/common/templates'),
+          path.resolve(config.get('root'), 'src/server/common/components')
+        ]
+      },
+      viewContext: () => ({
+        serviceName: config.get('serviceName'),
+        serviceUrl: '/',
+        assetPath: `${config.get('assetPath')}/assets`
+      }),
+      services
+    }
+  })
 
   server.ext('onPreResponse', catchAll)
 

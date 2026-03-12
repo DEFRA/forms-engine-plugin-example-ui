@@ -187,14 +187,16 @@ export default {
           to: 'assets'
         },
         {
-          from: require.resolve(
-            '@defra/forms-engine-plugin/application.min.css'
+          from: path.join(
+            defraFormsPath,
+            '.public/stylesheets/application.min.css'
           ),
           to: 'stylesheets/dxt-application.min.css'
         },
         {
-          from: require.resolve(
-            '@defra/forms-engine-plugin/application.min.js'
+          from: path.join(
+            defraFormsPath,
+            '.public/javascripts/application.min.js'
           ),
           to: 'javascripts/dxt-application.min.js'
         },

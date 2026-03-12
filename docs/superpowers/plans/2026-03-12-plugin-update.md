@@ -17,6 +17,7 @@
 ### Task 1: Update package.json and install
 
 **Files:**
+
 - Modify: `package.json`
 
 - [ ] **Step 1: Update dependency versions in package.json**
@@ -52,6 +53,7 @@
 ### Task 2: Update forms-service.js — TDD
 
 **Files:**
+
 - Create: `src/server/forms-service.test.js`
 - Modify: `src/server/forms-service.js`
 
@@ -91,7 +93,9 @@
 
       test('throws Boom.notFound for unknown id', async () => {
         await expect(
-          formsService.getFormMetadataById('00000000-0000-0000-0000-000000000000')
+          formsService.getFormMetadataById(
+            '00000000-0000-0000-0000-000000000000'
+          )
         ).rejects.toThrow(Boom.notFound().message)
       })
     })
@@ -226,6 +230,7 @@
 ### Task 3: Update plugin registration in server/index.js
 
 **Files:**
+
 - Modify: `src/server/index.js`
 
 - [ ] **Step 1: Add `path` import to server/index.js**
@@ -290,6 +295,7 @@
 ### Task 4: Remove deprecated useTudorCrown from layout
 
 **Files:**
+
 - Modify: `src/server/common/templates/layouts/page.njk`
 
 - [ ] **Step 1: Remove useTudorCrown from the govukHeader call**
@@ -365,10 +371,12 @@
   ```
 
   Expected:
+
   - Page renders with the GOV.UK King's Crown header (not Tudor Crown)
   - No 500 errors in the server console
 
   Then visit:
+
   ```
   http://localhost:3000/form/example-form/full-name
   http://localhost:3000/form/example-form/summary

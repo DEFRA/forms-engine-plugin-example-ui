@@ -1,5 +1,9 @@
 import Boom from '@hapi/boom'
 
+/**
+ * @import { FormStatus } from '@defra/forms-engine-plugin/types'
+ */
+
 // Form metadata
 const now = new Date()
 const user = { id: 'example-user', displayName: 'Example user' }
@@ -73,16 +77,29 @@ const formsService = {
       case metadata.slug:
         return Promise.resolve(metadata)
       default:
-        throw Boom.notFound(`Form '${slug}' not found`)
+        return Promise.reject(Boom.notFound())
     }
   },
-  getFormDefinition: function (id) {
+  getFormMetadataById: function (id) {
+    switch (id) {
+      case metadata.id:
+        return Promise.resolve(metadata)
+      default:
+        return Promise.reject(Boom.notFound())
+    }
+  },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getFormDefinition: function (id, /** @type {FormStatus} */ _state) {
     switch (id) {
       case metadata.id:
         return Promise.resolve(definition)
       default:
-        throw Boom.notFound(`Form '${id}' not found`)
+        return Promise.reject(Boom.notFound())
     }
+  },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getFormSecret: function (_formId, _secretName) {
+    return Promise.reject(Boom.notFound())
   }
 }
 

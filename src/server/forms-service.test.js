@@ -4,7 +4,7 @@ import services from '~/src/server/forms-service.js'
 const { formsService } = services
 
 const VALID_ID = '48158770-647d-4fde-a3c5-1fc1e28f780d'
-const VALID_SLUG = 'example-form'
+const VALID_SLUG = 'simple-form'
 
 describe('formsService', () => {
   describe('getFormMetadata', () => {

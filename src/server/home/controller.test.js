@@ -20,7 +20,9 @@ describe('#homeController', () => {
       url: '/'
     })
 
-    expect(result).toEqual(expect.stringContaining('Home |'))
+    expect(result).toEqual(
+      expect.stringContaining('Forms engine plugin demo |')
+    )
     expect(statusCode).toBe(statusCodes.ok)
   })
 })

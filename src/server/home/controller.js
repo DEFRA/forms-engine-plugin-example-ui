@@ -6,8 +6,8 @@
 export const homeController = {
   handler(_request, h) {
     return h.view('home/index', {
-      pageTitle: 'Home',
-      heading: 'Home'
+      pageTitle: 'Forms engine plugin demo',
+      heading: 'Forms engine plugin demo'
     })
   }
 }

@@ -7,8 +7,6 @@
 {# Import custom components globally #}
 {% from "heading/macro.njk" import appHeading %}
 
-{% set mainClasses = "app-main-wrapper" %}
-
 {% block head %}
   <link href="{{ getAssetPath('stylesheets/application.scss') }}" rel="stylesheet">
 {% endblock %}

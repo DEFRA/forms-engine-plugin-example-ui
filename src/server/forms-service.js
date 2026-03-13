@@ -1,5 +1,6 @@
 import Boom from '@hapi/boom'
 
+import simpleFormDefinition from './forms/simple-form.json' with { type: 'json' }
 import unicornDefinition from './forms/register-a-unicorn.json' with { type: 'json' }
 
 /**
@@ -29,49 +30,6 @@ const simpleFormMetadata = {
   notificationEmail: 'example-email-submission-recipient@defra.com',
   ...author,
   live: author
-}
-
-const simpleFormDefinition = {
-  engine: 'V2',
-  name: 'Simple form',
-  pages: [
-    {
-      title: 'Start page',
-      path: '/start',
-      controller: 'StartPageController',
-      components: [
-        {
-          name: 'Jhimsh',
-          title: 'Html',
-          type: 'Html',
-          content: '<p class="govuk-body">Example</p>',
-          options: {},
-          schema: {}
-        }
-      ]
-    },
-    {
-      path: '/full-name',
-      title: 'Enter your full name',
-      components: [
-        {
-          name: 'sdrGvs',
-          title: 'Full name',
-          type: 'TextField',
-          options: {},
-          schema: {}
-        }
-      ]
-    },
-    {
-      path: '/summary',
-      title: 'Check your answers',
-      controller: 'SummaryPageController'
-    }
-  ],
-  lists: [],
-  sections: [],
-  conditions: []
 }
 
 // Register a unicorn form

@@ -37,19 +37,14 @@ describe('#context', () => {
         getAssetPath: expect.any(Function),
         navigation: [
           {
-            isActive: true,
-            text: 'Home',
-            url: '/'
-          },
-          {
-            isActive: false,
+            active: false,
             text: 'Simple form',
-            url: '/simple-form/start'
+            href: '/simple-form/start'
           },
           {
-            isActive: false,
+            active: false,
             text: 'Register a unicorn form',
-            url: '/register-a-unicorn/where-do-you-live'
+            href: '/register-a-unicorn/where-do-you-live'
           }
         ],
         serviceName: 'forms-engine-plugin-example-ui',
@@ -131,19 +126,14 @@ describe('#context cache', () => {
         getAssetPath: expect.any(Function),
         navigation: [
           {
-            isActive: true,
-            text: 'Home',
-            url: '/'
-          },
-          {
-            isActive: false,
+            active: false,
             text: 'Simple form',
-            url: '/simple-form/start'
+            href: '/simple-form/start'
           },
           {
-            isActive: false,
+            active: false,
             text: 'Register a unicorn form',
-            url: '/register-a-unicorn/where-do-you-live'
+            href: '/register-a-unicorn/where-do-you-live'
           }
         ],
         serviceName: 'forms-engine-plugin-example-ui',

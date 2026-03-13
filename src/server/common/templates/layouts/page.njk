@@ -2,6 +2,7 @@
 
 {# Import GOVUK components globally #}
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 
 {# Import custom components globally #}
 {% from "heading/macro.njk" import appHeading %}
@@ -14,13 +15,13 @@
 
 {% block header %}
   {{ govukHeader({
-    homepageUrl: "https://www.gov.uk/",
-    classes: "app-header",
-    containerClasses: "govuk-width-container",
-    serviceName: serviceName,
-    serviceUrl: serviceUrl
+    homepageUrl: "https://www.gov.uk/"
   }) }}
-  {% include "partials/navigation/navigation.njk" %}
+  {{ govukServiceNavigation({
+    serviceName: "Forms demo",
+    serviceUrl: "/",
+    navigation: navigation
+  }) }}
 {% endblock %}
 
 {% block pageTitle %}

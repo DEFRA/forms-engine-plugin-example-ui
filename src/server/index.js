@@ -1,4 +1,5 @@
 import path from 'path'
+import { fileURLToPath } from 'node:url'
 import plugin from '@defra/forms-engine-plugin'
 import crumb from '@hapi/crumb'
 import hapi from '@hapi/hapi'
@@ -16,6 +17,8 @@ import { requestTracing } from '~/src/server/common/helpers/request-tracing.js'
 import { setupProxy } from '~/src/server/common/helpers/proxy/setup-proxy.js'
 import services from '~/src/server/forms-service.js'
 import { context as viewContext } from '~/src/config/nunjucks/context/context.js'
+
+const dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export async function createServer() {
   setupProxy()
@@ -77,8 +80,8 @@ export async function createServer() {
         baseLayoutPath: 'layouts/page.njk',
         paths: [
           path.resolve(config.get('root'), 'node_modules/govuk-frontend/dist'),
-          path.resolve(config.get('root'), 'src/server/common/templates'),
-          path.resolve(config.get('root'), 'src/server/common/components')
+          path.resolve(dirname, 'common/templates'),
+          path.resolve(dirname, 'common/components')
         ]
       },
       viewContext,

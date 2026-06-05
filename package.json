@@ -78,7 +78,7 @@
     "@typescript-eslint/parser": "^8.60.1",
     "autoprefixer": "^10.5.0",
     "babel-jest": "^29.7.0",
-    "babel-loader": "^9.2.1",
+    "babel-loader": "^10.1.1",
     "babel-plugin-transform-import-meta": "^2.3.3",
     "cheerio": "^1.2.0",
     "clean-webpack-plugin": "^4.0.0",

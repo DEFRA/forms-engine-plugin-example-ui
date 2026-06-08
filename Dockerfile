@@ -14,7 +14,7 @@ ARG PORT_DEBUG
 ENV PORT=${PORT}
 EXPOSE ${PORT} ${PORT_DEBUG}
 
-COPY --chown=node:node --chmod=755 package*.json .npmrc ./
+COPY --chown=node:node --chmod=755 package*.json ./
 RUN npm install --ignore-scripts
 COPY --chown=node:node --chmod=755 . .
 RUN npm run build
@@ -44,7 +44,6 @@ ARG PARENT_VERSION
 LABEL uk.gov.defra.ffc.parent-image=defradigital/node:${PARENT_VERSION}
 
 COPY --from=production_build /home/node/package*.json ./
-COPY --from=production_build /home/node/.npmrc ./
 COPY --from=production_build /home/node/.server ./.server/
 COPY --from=production_build /home/node/.public/ ./.public/
 

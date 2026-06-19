@@ -71,7 +71,7 @@
     "@types/hapi__catbox-memory": "^6.0.2",
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.24",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.0.0",
     "@types/nunjucks": "^3.2.6",
     "@types/webpack-assets-manifest": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^8.60.1",

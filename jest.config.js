@@ -32,7 +32,8 @@ export default {
       '@defra/forms-engine-plugin',
       '@defra/forms-model',
       'nanoid',
-      'slug'
+      'slug',
+      'geodesy'
     ].join('|')}/)`
   ]
 }
